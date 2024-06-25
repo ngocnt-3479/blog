@@ -1,6 +1,13 @@
 digit:
   length_8: 8
   length_50: 50
+  length_140: 140
   length_255: 255
+  size_5: 5
 regex:
   email: !ruby/regexp '/\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i'
+img:
+  valid_type: <%= %w(image/jpeg image/gif image/png) %>
+  size_500_500: [500, 500]
+format:
+  date: "%d %b %Y"

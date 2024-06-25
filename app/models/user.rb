@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  has_many :posts, dependent: :destroy
+
   before_save :downcase_email
 
   validates :name,
@@ -19,6 +21,10 @@ class User < ApplicationRecord
             allow_nil: true
 
   has_secure_password
+
+  def feed
+    posts
+  end
 
   private
 

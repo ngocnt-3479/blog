@@ -1,0 +1,12 @@
+<div class="main-box clearfix">
+  <h2><%= @user.name %></h2>
+  <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-img img-responsive center-block">
+  <div class="profile-since">
+      Member since: <%= @user.created_at.strftime(Settings.format.date) %>
+  </div>
+  <div class="profile-details">
+    <ul class="fa-ul">
+        <li><i class="fa-li fa fa-comment"></i>Posts: <%= @user.posts.count %></li>
+    </ul>
+  </div>
+</div>

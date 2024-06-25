@@ -1,7 +1,20 @@
-@import 'bootstrap-sprockets';
-@import 'bootstrap';
-@import 'color';
-
+@import "bootstrap-sprockets";
+@import "bootstrap";
+/* header */
+#logo {
+  float: left;
+  margin-right: 10px;
+  font-size: 1.7em;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+  padding-top: 9px;
+  font-weight: bold;
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+  }
+}
 /* universal */
 body {
   padding-top: 60px;
@@ -18,8 +31,14 @@ textarea {
 .center h1 {
   margin-bottom: 10px;
 }
+
 /* typography */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   line-height: 1;
 }
 h1 {
@@ -34,58 +53,30 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: $gray;
+  color: #777;
 }
 p {
   font-size: 1.1em;
   line-height: 1.7em;
 }
-/* header */
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
-  text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
-}
-#logo:hover {
-  color: $gray;
-  text-decoration: none;
-}
-
-/* miscellaneous */
-.debug_dump {
-  clear: both;
-  float: left;
-  width: 100%;
-  margin-top: 45px;
-  // @include box_sizing;
-}
 
 /* sidebar */
 aside {
-  section.user_info {
+  margin-left: 50px;
+  margin-left: 50px;
+  section .user_info {
     margin-top: 20px;
-  }
-
-  section {
     padding: 10px 0;
     margin-top: 20px;
-
     &:first-child {
       border: 0;
       padding-top: 0;
     }
-
     span {
       display: block;
       margin-bottom: 3px;
       line-height: 1;
     }
-
     h1 {
       font-size: 1.4em;
       text-align: left;
@@ -96,65 +87,232 @@ aside {
   }
 }
 
-.gravatar {
-  float: left;
-  margin-right: 10px;
-}
-
-.gravatar_edit {
-  margin-top: 15px;
-}
-
 /* forms */
-input, textarea, select, .uneditable-input {
+input,
+textarea,
+select,
+.uneditable-input {
   border: 1px solid #bbb;
   width: 100%;
   margin-bottom: 15px;
-  // @include box_sizing;
 }
-
 input {
   height: auto !important;
 }
 
-#error_explanation {
-  color: red;
-
-  ul {
-    color: red;
-    margin: 0 0 30px 0;
-  }
-}
-
-.field_with_errors {
-  @extend .has-error;
-
-  .form-control {
-    color: $state-danger-text;
-  }
-}
-
-.checkbox {
-  margin-bottom: 10px;
+.user_avatars {
+  overflow: auto;
   margin-top: 10px;
-    span {
-    font-weight: normal;
-    margin-left: 20px;
+
+  .gravatar {
+    margin: 1px 1px;
   }
- }
 
- #session_remember_me {
-  margin-left: 0;
-  width: auto;
- }
-
- .users {
-  list-style: none;
-  margin: 0;
-
-  li {
-    overflow: auto;
-    padding: 10px 0;
-    border-bottom: 1px solid $gray-lighter;
+  a {
+    padding: 0;
   }
+}
+
+.users.follow {
+  padding: 0;
+}
+
+
+body{margin-top:20px;}
+/* Social feed */
+.social-feed-box {
+  /*padding: 15px;*/
+  border: 1px solid #e7eaec;
+  background: #fff;
+  margin-bottom: 15px;
+}
+
+.social-avatar {
+  padding: 15px 15px 0 15px;
+
+  img {
+    height: 40px;
+    width: 40px;
+    margin-right: 10px;
+  }
+
+  .media-body {
+    a {
+      font-size: 14px;
+      display: block;
+    }
+  }
+}
+
+
+/* USER PROFILE */
+#user-profile {
+  h2 {
+    padding-right: 15px;
+  }
+
+  .profile-img {
+    border: 1px solid #e1e1e1;
+    padding: 4px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .profile-label {
+    text-align: center;
+    padding: 5px 0;
+
+    .label {
+      padding: 5px 15px;
+      font-size: 1em;
+    }
+  }
+
+  .profile-since {
+    text-align: center;
+    margin-top: -5px;
+  }
+
+  .profile-details {
+    padding: 15px 0;
+    border-top: 1px solid #e1e1e1;
+    border-bottom: 1px solid #e1e1e1;
+    margin: 15px 0;
+
+    ul {
+      padding: 0;
+      margin-top: 0;
+      margin-bottom: 0;
+      margin-left: 40px;
+
+      > li {
+        margin: 3px 0;
+        line-height: 1.5;
+
+        > i {
+          padding-top: 2px;
+        }
+
+        > span {
+          color: #34d1be;
+        }
+      }
+    }
+  }
+
+  .profile-header {
+    position: relative;
+
+    > h3 {
+      margin-top: 10px;
+    }
+  }
+
+  .profile-tabs {
+    margin-top: 30px;
+  }
+
+  .profile-user-info {
+    padding-bottom: 20px;
+
+    .profile-user-details {
+      position: relative;
+      padding: 4px 0;
+
+      .profile-user-details-label {
+        width: 110px;
+        float: left;
+        bottom: 0;
+        font-weight: bold;
+        left: 0;
+        position: absolute;
+        text-align: right;
+        top: 0;
+        width: 110px;
+        padding-top: 4px;
+      }
+
+      .profile-user-details-value {
+        margin-left: 120px;
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+	#user-profile .profile-user-info .profile-user-details .profile-user-details-label {
+		float: none;
+		position: relative;
+		text-align: left;
+	}
+	#user-profile .profile-user-info .profile-user-details .profile-user-details-value {
+		margin-left: 0;
+	}
+	#user-profile .profile-social {
+		margin-top: 20px;
+	}
+}
+@media only screen and (max-width: 420px) {
+	#user-profile .profile-header .edit-profile {
+		display: block;
+		position: relative;
+		margin-bottom: 15px;
+	}
+	#user-profile .profile-message-btn .btn {
+		display: block;
+	}
+}
+
+
+.main-box {
+  background: #FFFFFF;
+  -webkit-box-shadow: 1px 1px 2px 0 #CCCCCC;
+  -moz-box-shadow: 1px 1px 2px 0 #CCCCCC;
+  -o-box-shadow: 1px 1px 2px 0 #CCCCCC;
+  -ms-box-shadow: 1px 1px 2px 0 #CCCCCC;
+  box-shadow: 1px 1px 2px 0 #CCCCCC;
+  padding: 20px;
+
+  h2 {
+    margin: 0 0 15px -20px;
+    padding: 5px 0 5px 20px;
+    border-left: 10px solid #c2c2c2; /*7e8c8d*/
+  }
+}
+
+.btn {
+    border: none;
+	padding: 6px 12px;
+	border-bottom: 4px solid;
+	-webkit-transition: border-color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
+	transition: border-color 0.1s ease-in-out 0s, background-color 0.1s ease-in-out 0s;
+	outline: none;
+}
+
+.btn-primary {
+  background-color: #3fcfbb;
+  border-color: #2fb2a0;
+
+  &:hover,
+  &:focus,
+  &:active,
+  &.active,
+  .open .dropdown-toggle & {
+    background-color: #38c2af;
+    border-color: #2aa493;
+  }
+}
+
+a {
+  color: #2bb6a3;
+  outline: none !important;
+
+  &:hover,
+  &:focus {
+    color: #2bb6a3;
+  }
+}
+
+.modal-content {
+  margin: 10px;
 }

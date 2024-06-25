@@ -11,13 +11,16 @@ class UsersController < ApplicationController
       reset_session
       log_in @user
       flash[:success] = "Sign up success"
+
       redirect_to @user, status: :see_other
     else
       render :new, status: :unprocessable_content
     end
   end
 
-  def show; end
+  def show
+    @pagy, @posts = pagy @user.posts.newest
+  end
 
   private
 
