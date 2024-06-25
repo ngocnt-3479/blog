@@ -1,0 +1,21 @@
+<h1>Login</h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_with model: @session, url: login_path do |form| %>
+      <div>
+        <%= form.label :email %><br>
+        <%= form.text_field :email %>
+      </div>
+
+      <div>
+        <%= form.label :password %><br>
+        <%= form.password_field :password %>
+      </div>
+
+      <div>
+        <%= form.submit %>
+      </div>
+    <% end %>
+    <p> If you are new user, please <%= link_to "sign up", signup_path %> now!</p>
+  </div>
+</div>

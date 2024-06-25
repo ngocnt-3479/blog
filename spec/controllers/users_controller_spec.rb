@@ -19,6 +19,7 @@ RSpec.describe UsersController, type: :controller do
   describe "POST create" do
     context "success create" do
       let(:valid_user_params) {attributes_for :user}
+
       before do
         post :create, params: {user: valid_user_params}
       end
@@ -27,13 +28,14 @@ RSpec.describe UsersController, type: :controller do
         expect(User.where(id: assigns(:user).id)).to exist
       end
 
-      it "show flash Sign up success" do
+      it "show flash sign up success" do
         expect(flash[:success]).to eq("Sign up success")
       end
     end
 
-    context "fail create" do
+    context "failure create" do
       let(:invalid_user_params) {attributes_for(:user, name: "")}
+
       before do
         post :create, params: {user: invalid_user_params}
       end
@@ -50,6 +52,7 @@ RSpec.describe UsersController, type: :controller do
 
   describe "GET show" do
     let(:user) {create(:user)}
+
     context "success show" do
       before do
         get :show, params: {id: user.id}
