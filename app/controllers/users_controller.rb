@@ -1,6 +1,10 @@
 class UsersController < ApplicationController
   before_action :load_user, only: %i(show)
 
+  def index
+    @pagy, @users = pagy User.all_except(current_user)
+  end
+
   def new
     @user = User.new
   end
