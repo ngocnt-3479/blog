@@ -12,5 +12,7 @@ module Blog
   class Application < Rails::Application
     config.load_defaults 7.1
     config.autoload_lib(ignore: %w(assets tasks))
+    config.active_storage.variant_processor = :mini_magick
+    config.action_view.form_with_generates_remote_forms = true
   end
 end

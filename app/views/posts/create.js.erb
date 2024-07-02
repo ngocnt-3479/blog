@@ -1,0 +1,20 @@
+<% if !@post.errors.any? %>
+{
+  $("#flash-messages").html('<%= j render "layouts/flash" %>');
+
+  $("#new_post_form")[0].reset();
+
+  if ($("#new_feed")[0])
+  {
+    $("#new_feed").prepend("<%= j render @post %>")
+  }
+  else
+  {
+    $("#new_feed").append('<%= j render @post %>');
+  }
+}
+<% else %>
+{
+  $("#new_post_form").html('<%= j render "posts/form", post: @post, id_name: :new_post_form %>');
+}
+<% end %>

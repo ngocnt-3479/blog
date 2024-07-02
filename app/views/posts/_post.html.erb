@@ -1,0 +1,83 @@
+<div class="row" id="post-<%= post.id %>">
+  <div class="col-md-6">
+    <div class="social-feed-box">
+      <% if current_user? post.user%>
+        <div class="pull-right social-action dropdown">
+          <button
+            class="btn btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenuButton"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+          >
+            <i class="fa fa-angle-down"></i>
+          </button>
+
+          <ul class="dropdown-menu m-t-xs" aria-labelledby="dropdownMenuButton">
+            <li>
+              <a data-toggle="modal" data-target="#editPostModal-<%= post.id %>"
+                >Edit</a
+              >
+            </li>
+            <li>
+              <%= link_to "Delete", post, data: {"turbo-method": :delete,
+              "turbo-confirm": "Are you sure"} %>
+            </li>
+          </ul>
+        </div>
+      <% end %>
+
+      <div class="social-avatar">
+        <a href="" class="pull-left">
+          <img
+            alt="image"
+            src="https://bootdey.com/img/Content/avatar/avatar1.png"
+          />
+        </a>
+        <div>
+          <%= link_to post.user.name, post.user %>
+          <div>
+            <small class="text-muted">
+              <%= time_ago_in_words post.created_at %> ago
+            </small>
+          </div>
+        </div>
+      </div>
+
+      <div class="social-body">
+        <p><%= post.content %></p>
+
+        <div>
+          <%= image_tag post.image.variant(:display) if post.image.attached? %>
+        </div>
+
+        <div class="btn-group">
+          <button class="btn btn-white btn-xs">
+            <i class="fa fa-thumbs-up"></i> Like this!
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="editPostModal-<%= post.id %>" role="dialog">
+  <div class="modal-dialog">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">
+          &times;
+        </button>
+        <h4 class="modal-title">Edit post</h4>
+      </div>
+      <%= render "posts/form", post: post, id_name: :edit_post_form %>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">
+          Close
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

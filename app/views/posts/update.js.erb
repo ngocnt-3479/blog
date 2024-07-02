@@ -1,0 +1,11 @@
+<% if !@post.errors.any? %>
+{
+  $("#editPostModal-<%=@post.id%>").modal("hide");
+  $("#post-<%=@post.id%>").replaceWith('<%= j render "posts/post", post: @post %>');
+  $("#flash-messages").html('<%= j render "layouts/flash" %>');
+}
+<% else %>
+{
+  $("#edit_post_form").html('<%= j render "posts/form", post: @post, id_name: :edit_post_form %>');
+}
+<% end %>
