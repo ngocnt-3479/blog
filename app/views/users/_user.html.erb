@@ -1,0 +1,14 @@
+<div class="user">
+  <div class="row">
+    <div class="col-md-2 col-sm-2">
+      <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="user" class="profile-photo-lg">
+    </div>
+    <div class="col-md-7 col-sm-7">
+      <h5><a href= <%= user_path(user) %> class="profile-link"><%= user.name %></a></h5>
+      <p><%= user.email %></p>
+    </div>
+    <div class="col-md-3 col-sm-3">
+        <%= render 'users/follow_form', user: user %>
+    </div>
+  </div>
+</div>
