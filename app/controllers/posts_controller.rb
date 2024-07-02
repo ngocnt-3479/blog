@@ -7,12 +7,12 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.build post_params
     @post.image.attach params.dig(:post, :image)
-    flash[:success] = "Create post successfully" if @post.save
+    flash.now[:success] = "Create post successfully" if @post.save
     respond_to(&:js)
   end
 
   def update
-    flash[:success] = "Update post successfully" if @post.update post_params
+    flash.now[:success] = "Update post successfully" if @post.update post_params
     respond_to(&:js)
   end
 

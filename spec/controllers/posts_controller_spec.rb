@@ -11,7 +11,7 @@ RSpec.describe PostsController, type: :controller do
 
       before do
         log_in user
-        post :create, params: {post: vaild_post_params, user_id: user.id}, format: :js
+        post :create, xhr: true, params: {post: vaild_post_params, user_id: user.id}
       end
 
       it "should have a new post" do
@@ -28,7 +28,7 @@ RSpec.describe PostsController, type: :controller do
 
       before do
         log_in user
-        post :create, params: {post: invalid_spost_params, user_id: user.id}, format: :js
+        post :create, xhr: true, params: {post: invalid_spost_params, user_id: user.id}
       end
 
       it "have errors" do
@@ -46,7 +46,7 @@ RSpec.describe PostsController, type: :controller do
     context "success update a post" do
       before do
         log_in valid_user
-        patch :update, params: {post: {content: edit_content}, id: post.id}, format: :js
+        patch :update, xhr: true, params: {post: {content: edit_content}, id: post.id}
       end
 
       it "post content update" do
@@ -61,7 +61,7 @@ RSpec.describe PostsController, type: :controller do
     context "failure update a post when invalid user" do
       before do
         log_in invalid_user
-        patch :update, params: {post: {content: edit_content}, id: post.id}, format: :js
+        patch :update, xhr: true, params: {post: {content: edit_content}, id: post.id}
       end
 
       it "post content not update" do
@@ -83,7 +83,7 @@ RSpec.describe PostsController, type: :controller do
     context "success destroy a post" do
       before do
         log_in valid_user
-        delete :destroy, params: {id: post.id},  format: :js
+        delete :destroy, xhr: true, params: {id: post.id}
       end
 
       it "remove post from database" do
@@ -98,7 +98,7 @@ RSpec.describe PostsController, type: :controller do
     context "failure update a post when invalid user" do
       before do
         log_in invalid_user
-        delete :destroy, params: {id: post.id},  format: :js
+        delete :destroy, xhr: true, params: {id: post.id}
       end
 
       it "not remove post from database" do
