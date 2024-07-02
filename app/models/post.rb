@@ -9,6 +9,10 @@ class Post < ApplicationRecord
 
   scope :relate_post, ->(user_ids){where(user_id: user_ids)}
 
+  scope :visible_to_user, lambda {|current_user|
+    where("isPrivate = ? OR user_id = ?", false, current_user.id)
+  }
+
   validates :content,
             presence: true,
             length: {maximum: Settings.digit.length_140}

@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @pagy, @posts = pagy @user.posts.newest
+    @pagy, @posts = pagy @user.posts.visible_to_user(current_user).newest
   end
 
   private

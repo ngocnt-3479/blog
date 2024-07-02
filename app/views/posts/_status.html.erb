@@ -1,0 +1,9 @@
+<% if post.isPrivate %>
+  <li id="post_status">
+    <%= link_to "Public",  update_status_post_path(post, status: :public), method: :patch , :remote => true %>
+  </li>
+<% else %>
+  <li id="post_status">
+    <%= link_to "Private", update_status_post_path(post, status: :private), method: :patch , :remote => true %>
+  </li>
+<% end %>

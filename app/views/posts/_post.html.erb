@@ -24,6 +24,7 @@
               <%= link_to "Delete", post, data: {"turbo-method": :delete,
               "turbo-confirm": "Are you sure"} %>
             </li>
+            <%= render "posts/status", post: post %>
           </ul>
         </div>
       <% end %>
