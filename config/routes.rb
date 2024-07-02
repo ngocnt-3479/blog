@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :posts, only: %i(create update destroy) do
+    resources :reactions, only: %i(create destroy), shallow: true
     patch "update_status", to: "posts#update_status", on: :member
   end
   resources :relationships, only: %i(create destroy)
