@@ -13,4 +13,9 @@ Rails.application.routes.draw do
     patch "update_status", to: "posts#update_status", on: :member
   end
   resources :relationships, only: %i(create destroy)
+  namespace :api do
+    post "/signup", to: "users#create"
+    post "/login", to: "sessions#create"
+    resources :users, only: %i[index show]
+  end
 end

@@ -14,5 +14,12 @@ module Blog
     config.autoload_lib(ignore: %w(assets tasks))
     config.active_storage.variant_processor = :mini_magick
     config.action_view.form_with_generates_remote_forms = true
+
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
   end
 end
