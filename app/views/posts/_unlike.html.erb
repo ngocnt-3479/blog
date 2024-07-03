@@ -1,3 +1,0 @@
-<%= button_to reaction_path(current_user.reactions.find_by(post_id: post.id)), method: :delete, class: "btn btn-white btn-xs liked", remote: true do %>
-  <i class="fa fa-thumbs-up"></i> Unlike
-<% end %>

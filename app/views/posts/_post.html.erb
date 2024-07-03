@@ -48,21 +48,20 @@
 
       <div class="social-body">
         <p><%= post.content %></p>
+
         <div>
           <%= image_tag post.image.variant(:display) if post.image.attached? %>
         </div>
+
         <div class="btn-group">
-          <% if current_user.liked? post%>
-            <%= render "posts/unlike", post: post %>
-          <% else %>
-            <%= render "posts/like", post: post %>
-          <% end %>
+          <button class="btn btn-white btn-xs">
+            <i class="fa fa-thumbs-up"></i> Like this!
+          </button>
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <div class="modal fade" id="editPostModal-<%= post.id %>" role="dialog">
   <div class="modal-dialog">

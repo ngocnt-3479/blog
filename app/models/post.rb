@@ -1,7 +1,5 @@
 class Post < ApplicationRecord
   belongs_to :user
-  has_many :reactions, dependent: :destroy
-  has_many :liked_users, through: :reactions, source: :user
 
   has_one_attached :image do |attachable|
     attachable.variant :display, resize_to_fit: Settings.img.size_500_500
