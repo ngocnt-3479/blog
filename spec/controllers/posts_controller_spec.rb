@@ -110,5 +110,42 @@ RSpec.describe PostsController, type: :controller do
         expect(flash[:danger]).to eq("Post invalid")
       end
     end
+
+    describe "PATH update_status" do
+      let(:valid_user) {create :user}
+      let(:invalid_user) {create :user}
+      let(:post) {create :post, user: valid_user}
+
+      context "success update status a post" do
+        before do
+          log_in valid_user
+          patch :update_status, xhr: true, params: {status: :private, id: post.id}
+        end
+
+        it "post status update" do
+          expect(assigns(:post).isPrivate).to be_truthy
+        end
+
+        it "show flash update post success" do
+          expect(flash[:success]).to eq("Change status post to private success")
+        end
+      end
+
+      context "failure update status a post when invalid user" do
+        before do
+          log_in invalid_user
+          patch :update_status, xhr: true, params: {status: :private, id: post.id}
+        end
+
+        it "post content not update" do
+          post.reload
+          expect(post.isPrivate).not_to be_truthy
+        end
+
+        it "show flash update post fail" do
+          expect(flash[:danger]).to eq("Post invalid")
+        end
+      end
+    end
   end
 end
