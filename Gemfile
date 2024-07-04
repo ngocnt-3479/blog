@@ -2,6 +2,7 @@
 
 source "https://rubygems.org"
 
+gem "active_model_serializers"
 gem "active_storage_validations", "0.9.8"
 gem "bcrypt"
 gem "bootsnap", require: false
@@ -13,8 +14,10 @@ gem "image_processing", "1.12.2"
 gem "importmap-rails"
 gem "jbuilder"
 gem "jquery-rails"
+gem "jwt"
 gem "pagy"
 gem "puma", ">= 5.0"
+gem "rack-cors"
 gem "rails", "~> 7.1.3", ">= 7.1.3.4"
 gem "rails-controller-testing"
 gem "sassc-rails"
